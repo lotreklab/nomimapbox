@@ -1,0 +1,15 @@
+version: '3'
+services:
+    web:
+        image: nginx:latest
+        ports:
+            - "8080:80"
+        volumes:
+            - ./mapbox-test:/usr/share/nginx/html
+    nominatim:
+        image: mediagis/nominatim
+        command: bash /app/start.sh
+        ports:
+            - "7070:8080"
+        volumes:
+            - ./nominatim/postgresdata:/var/lib/postgresql/11/main
