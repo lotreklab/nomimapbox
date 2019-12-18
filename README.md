@@ -13,7 +13,7 @@ mkdir nominatim
 wget -O nominatim/data.osm.pbf http://download.openstreetmap.fr/extracts/europe/italy.osm.pbf
 ```
 
-Then start importing your data using the [nominatim docker image](https://hub.docker.com/r/mediagis/nominatim):
+Then start importing your data using the [Nominatim docker image](https://hub.docker.com/r/mediagis/nominatim):
 
 ```
 docker run -t -v ./nominatimdata:/data mediagis/nominatim  sh /app/init.sh /data/data.osm.pbf postgresdata 4
@@ -27,19 +27,19 @@ Replace `<your-access-token>` in the first line of `mapbox-test/js/main.js` with
 
 ![Editor](readme/editor.png)
 
-Also you can create your own map styles at [studio.mapbox.com](https://studio.mapbox.com/) with an advanced editor that permits to change every aspect of it, going from the country labels to the roads width. In this experiment we created a custom style but if you want to use your style you can easily copy it's style ID:
+Also you can create your own map styles at [studio.mapbox.com](https://studio.mapbox.com/) with an advanced editor that permits to change every aspect of it, from the country labels to the roads' width. In this experiment we created a custom style but if you want to use your style you can easily copy it's style ID:
 
 ![Style ID](readme/style.png)
 
-And replace it in the `mapbox-test/js/main.js` file.
+and replace it in the `mapbox-test/js/main.js` file.
 
-When the import process will be completed you can start the Nominatim server and Nginx with:
+When the import process will be completed you can run the Nominatim server and Nginx with:
 ```
 docker-compose up
 ```
 
 If everything went well you can see your Mapbox map at http://localhost:8080.
 
-Keep in mind that Nominatim is not a real search engine so you need to search places with theirs complete name. If you are searching for complex geocoder you should check these:
+Keep in mind that Nominatim is not a real search engine so you need to search places with theirs complete name. If you are searching for a more complex geocoder you should check these:
 - [Photon](https://github.com/komoot/photon)
 - [Pelias](https://github.com/pelias/pelias)

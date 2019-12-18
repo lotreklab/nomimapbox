@@ -10,6 +10,7 @@ class NominatimControl {
         this.input = document.createElement('input');
         this.input.setAttribute('placeholder', 'Search...');
         this.input.onchange = this.searchPlace.bind(this);
+        this.input.onkeyup = () => this.results.innerHTML = '';
         this.results = document.createElement('div');
         this.results.className = 'nominatim-results'
         this._container.appendChild(this.input);
